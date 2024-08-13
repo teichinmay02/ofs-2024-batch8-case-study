@@ -27,6 +27,28 @@ public class LoginServiceImpl implements LoginService {
         if (login != null) {
             login.setLoginCount(login.getLoginCount() + 1);
             loginRepository.save(login);
+            
         }
     }
+    
+
+    @Override
+    public Integer getLoginCount(String email) {
+        Login login = loginRepository.findbyEmail(email);
+        if (login != null) {
+            return login.getLoginCount();
+        }
+        return null;
+    }
+
+
+    @Override
+    public void lockAccount(String email) {
+        Login login = loginRepository.findbyEmail(email);
+        if (login != null) {
+            login.setStatus("locked");
+            loginRepository.save(login);
+        }
+    }
+
 }

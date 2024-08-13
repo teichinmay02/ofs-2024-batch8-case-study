@@ -11,6 +11,8 @@ import com.ofss.main.repository.CustomerRepository;
 
 @Service
 public interface LoginService {
-	 Login authenticateUser(String email, String password);
-	 void incrementLoginCount(String email);
+	public Login authenticateUser(String email, String password);
+	public void incrementLoginCount(String email);
+	Integer getLoginCount(String email);
+	void lockAccount(String email);
 }

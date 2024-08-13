@@ -20,11 +20,22 @@ public class LoginController
     @PostMapping("authenticate")
     public String login(@RequestParam String email, @RequestParam String password) {
         Login login = loginService.authenticateUser(email, password);
+        
         if (login != null) 
-        {
-            loginService.incrementLoginCount(email);
             return "Login successful!";
+        
+        else
+        {
+        	loginService.incrementLoginCount(email);
+        	Integer loginCount = loginService.getLoginCount(email);
+        	System.out.println(loginCount);
+        	if(loginCount>=3)
+        	{
+        		loginService.lockAccount(email);
+        		return "Your account has been locked due to too many failed login attempts.";
+        	}
+        	return "Invalid username or password. Attempts Remaining : "+(3-loginCount);
+        	
         }
-        return "Invalid username or password";
     }
 }
