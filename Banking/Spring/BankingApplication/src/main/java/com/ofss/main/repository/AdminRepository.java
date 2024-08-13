@@ -15,7 +15,7 @@ public interface AdminRepository extends CrudRepository<Customer, String> {
 	List<Customer> findByStatus(boolean status);
 
 	@Modifying
-	@Query("UPDATE Login l SET l.status=false WHERE l.email=email")
+	@Query("UPDATE Login l SET l.status=false, l.loginCount = 0 WHERE l.email=email")
 	void updateLoginStatus(String email);
 	
 }
