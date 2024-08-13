@@ -4,6 +4,7 @@ import com.ofss.main.domain.Admin;
 import com.ofss.main.domain.Customer;
 import com.ofss.main.repository.AdminRepository;
 import com.ofss.main.repository.CustomerRepository;
+import com.ofss.main.repository.LoginRepository;
 import com.ofss.main.service.AdminService;
 import com.ofss.main.service.DatabaseUtil;
 
@@ -26,6 +27,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	AdminRepository adminRepository;
+	
+	@Autowired
+	LoginRepository loginRepository;
 	
 	@Override
 	public Admin validateAdminLogin(Admin admin) {
@@ -57,6 +61,14 @@ public class AdminServiceImpl implements AdminService {
 		customerRepository.updateCustomerStatus(custId, status);
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Transactional
+	@Override
+	public void updateLoginStatus(String email) {
+		// TODO Auto-generated method stub
+		//loginRepository.
+		adminRepository.updateLoginStatus(email);
 	}
 	
 	

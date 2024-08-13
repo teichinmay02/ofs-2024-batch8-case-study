@@ -15,8 +15,17 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Login authenticateUser(String email, String password) {
         Login login = loginRepository.findbyEmail(email);
-        if (login != null && login.getPassword().equals(password) ) {
-            return login;
+        System.out.println(login.isStatus());
+        if(!login.isStatus())
+        {
+            if (login != null && login.getPassword().equals(password) ) {
+                return login;
+            }
+        }
+        else
+        {
+        	System.out.println("account locked!");
+        	return null;
         }
         return null;
     }
@@ -46,7 +55,7 @@ public class LoginServiceImpl implements LoginService {
     public void lockAccount(String email) {
         Login login = loginRepository.findbyEmail(email);
         if (login != null) {
-            login.setStatus("locked");
+            login.setStatus(true);
             loginRepository.save(login);
         }
     }

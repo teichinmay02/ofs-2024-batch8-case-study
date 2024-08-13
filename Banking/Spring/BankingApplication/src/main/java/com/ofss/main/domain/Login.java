@@ -21,16 +21,18 @@ public class Login {
     @Column(name = "login_count")
     private Integer loginCount;
     
-    @Column(name = "status")
-    private String status;
+    @Column(name = "locked_status")
+    private boolean status;
     
     @ManyToOne
     @JoinColumn(name = "cust_id")
     private Customer customer;
 
     public Login() {}
+
     
-	public Login(String email, String password, Integer loginCount, String status, Customer customer) {
+    
+	public Login(String email, String password, Integer loginCount, boolean status, Customer customer) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -38,6 +40,8 @@ public class Login {
 		this.status = status;
 		this.customer = customer;
 	}
+
+
 
 	public String getEmail() {
 		return email;
@@ -63,11 +67,11 @@ public class Login {
 		this.loginCount = loginCount;
 	}
 
-	public String getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
@@ -81,9 +85,10 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [email=" + email + ", password=" + password + ", loginCount=" + loginCount + ", status="
-				+ status + ", customer=" + customer + "]";
+		return "Login [email=" + email + ", password=" + password + ", loginCount=" + loginCount + ", status=" + status
+				+ ", customer=" + customer + "]";
 	}
+    
   
 
 

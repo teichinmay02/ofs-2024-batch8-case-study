@@ -17,4 +17,6 @@ public interface AdminService {
 	List<Customer> getUnapprovedCustomers(boolean status);
 	
 	public void updateCustomerStatus(String custId, boolean status);
+	
+	public void updateLoginStatus(String email);
 }

@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService
 		login.setEmail(customer.getEmail()); // Using email as username
         login.setPassword(customer.getFirstName()+"_"+customer.getCustId()); // Set a default or generated password
         login.setLoginCount(0);
-        login.setStatus("unlocked");
+        login.setStatus(false);
         login.setCustomer(customer);
         loginRepository.save(login);
         savedCustomer.setStatus(false);
