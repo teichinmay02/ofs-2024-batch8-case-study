@@ -1,0 +1,138 @@
+<!--
+ Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+ <div class="oj-hybrid-padding">
+    <h5>Enter Name</h5>
+    <div>
+    <oj-c-input-text
+                id="text-input"
+                value="{{firstName}}"
+                label-hint="Enter first name"
+                label-edge="inside">
+    </oj-c-input-text>
+    <h5>Hey! <oj-bind-text value="[[firstName]]"></oj-bind-text></h5>
+    </div>
+    <div>
+      <h5>Enter Salary</h5>
+      <oj-c-input-number
+                  value="{{salary}}"
+                  min = "0"
+                  label-hint="Enter salary"></oj-c-input-number>
+                  <h3>Your Salary : <oj-bind-text value="[[salary]]"></oj-bind-text></h3>
+    </div>
+
+    <oj-c-button id="button1" on-oj-action="[[handleClick]]" label="Submit" disabled="[[firstName()==null || firstName.trim=='']]"></oj-c-button>
+    
+
+    <br><br>With innerHTML: <br><br> 
+
+    <div id="user-info"></div>
+
+    <br><br>With OJ data-bind: <br><br>
+    <oj-bind-text value="[[firstName]]"></oj-bind-text><br>
+    <oj-bind-text value="[[city]]"></oj-bind-text><br>
+    <oj-bind-text value="[[email]]"></oj-bind-text><br>
+    <oj-bind-text value="[[phone]]"></oj-bind-text><br>
+    <oj-bind-text value="[[website]]"></oj-bind-text><br>
+
+
+    
+    <h3 style="padding-top: 100px;">Activity 2:</h3>
+    <!-- <oj-message-banner
+    data="[[personalInformationMessages]]"
+    type="section"
+    on-oj-close="[[closePersonalInformationMessage]]"></oj-message-banner> -->
+    Enter Name
+    <div>
+    <oj-c-input-text
+                id="text-input"
+                value="{{firstName}}"
+                label-hint="Enter first name"
+                label-edge="inside">
+    </oj-c-input-text>
+    Hey! <oj-bind-text value="[[firstName]]"></oj-bind-text>
+    </div>
+    <br>
+    <div>
+      Enter Salary
+      <oj-c-input-number
+                  value="{{salary}}"
+                  min = "0"
+                  label-hint="Enter salary"></oj-c-input-number>
+                  your salary :  <oj-bind-text value="[[salary]]"></oj-bind-text>
+    </div>
+
+<br><br>
+
+    <div id="div1">
+        <oj-form-layout max-columns="2" direction="row">
+           Enter password : <br>
+           <oj-c-input-password value="{{password}}" label-hint="enter password"></oj-c-input-password>
+           <oj-c-input-password
+              
+           value="{{password}}"
+           label-hint="confirm password"
+           ></oj-c-input-password>
+            <oj-c-input-text
+              
+              value="[[password]]"
+              label-hint="view password"
+              disabled="true"></oj-c-input-text>
+            
+          </oj-form-layout>
+
+    </div> 
+
+    <br><br>
+    <div id="2">
+        choose date & Time:
+        <br><br>
+        <div id="sampleDemo" class="demo-padding demo-container">
+            <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                      
+              <div id="div1">
+                <oj-label for="datepicker">Date Time Picker</oj-label>
+                <oj-date-time-picker id="datepicker" value="{{datetime}}"></oj-date-time-picker>
+              
+                <br />
+              
+                <span class="oj-label">Current component value is:</span>
+                <span><oj-bind-text value="[[datetime]]"></oj-bind-text></span>
+              </div>
+              
+              
+              
+            </div>
+          </div>
+    </div>
+
+
+<br><br>
+    <div>
+        <h5 class="oj-sm-padding-2x-bottom">enter your experience</h5>
+            <oj-form-layout max-columns="3" direction="row">
+              <oj-slider min="0" max="100" value="{{exp}}" label-hint="Enabled"></oj-slider><oj-bind-text value="{{exp}}"></oj-bind-text>   
+
+            </oj-form-layout>
+
+    </div>
+    
+
+    <br><br>
+
+    <div>
+        <h5>Are you a human : </h5>
+        <oj-switch id="enabledSwitchOn" value="{{human}}" label-hint="choose : "></oj-switch>
+       
+    </div>
+
+<br><br><br>
+    <h3>Activity - 03</h3>
+
+    <div>
+      <!-- <oj-c-button id="button2" label="[[button2Text]]"></oj-c-button> -->
+    </div>
+  </div>
+  
