@@ -90,7 +90,7 @@ class DashboardViewModel
     // this.clickedButton((event.currentTarget as HTMLElement).id);
     // return true;
     let elementName = (event.currentTarget as HTMLElement).tagName;
-    // alert("Congrats "+elementName+",\nYour Name : "+this.firstName()+"\nYour Salary : "+this.salary()+"\ndate and time : "+this.datetime()+"\npassword : "+this.password()+"\nare you human : "+this.human()+"\nyour experience : "+this.exp());
+    //alert("Congrats "+elementName+",\nYour Name : "+this.firstName()+"\nYour Salary : "+this.salary()+"\ndate and time : "+this.datetime()+"\npassword : "+this.password()+"\nare you human : "+this.human()+"\nyour experience : "+this.exp());
     
     let id = parseInt(this.firstName());
     let URL = 'https://jsonplaceholder.typicode.com/users/'+id;
