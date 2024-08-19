@@ -50,8 +50,8 @@ class AboutViewModel {
 
   email : ko.Observable<string> | ko.Observable<any>;
   password : ko.Observable<string> | ko.Observable<any>;
+  //http://localhost:8080/login/authenticate?email=riz.lala@oracle.com&password=Jane_112
   
-  URL = "http://localhost:8080/login/authenticate";
 
   constructor() {
 
@@ -59,48 +59,49 @@ class AboutViewModel {
     this.password = ko.observable(null);
   }
 
+
   public handleClick = async () => {
-    let rowData = 
-    {
-      email : this.email(),
-      password : this.password()
-    };
-    const row = JSON.stringify(rowData);
-    console.log(row);
+ 
 
+    const email = this.email();
+    const password = this.password();
+    console.log(email);
+    console.log(password);
     
+    const URL = `http://localhost:8080/login/authenticate?email=${email}&password=${password}`;
+    console.log(URL);
 
-    // const request = new Request(this.URL, {
-    //   headers: new Headers({
-    //     "Content-type": "application/json; charset=UTF-8",
-    //   }),
-    //   body: row,
-    //   method: "POST",
-    // });
-
-    try {
-      const response = await fetch(this.URL, {
-        headers: new Headers({
-          "Content-Type": "application/json; charset=UTF-8",
-        }),
-        body: JSON.stringify(rowData),
-        method: "POST",
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
+    fetch(URL)
+    .then(response => {
+      if (response.ok) {
+          console.log("done login");
       }
-
-      const result = await response.json();
-      console.log("Login successful:", result);
+      else
+      {
+        throw new Error('Network response was not ok');
+      }
       
-      // Handle successful login, e.g., store session, redirect, etc.
-      alert("Login successful");
-      window.location.href = "http://localhost:8000/?ojr=about";
-    } catch (error) {
-      console.error("Error during login:", error);
-      alert("Login failed. Please check your credentials.");
-    }
+    })
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+    // try {
+      
+    // const response = await fetch(URL);
+    // if (!response.ok) {
+    //   throw new Error(`Response status: ${response.status}`);
+    // }
+
+    // const json = await response.json();
+    // console.log(json);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    
   };
 
 }
