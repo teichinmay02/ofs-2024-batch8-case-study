@@ -27,7 +27,8 @@ import "ojs/ojknockout";
 import { whenDocumentReady } from 'ojs/ojbootstrap';
 import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
+import { RESTDataProvider } from 'ojs/ojrestdataprovider';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojknockout';
@@ -42,18 +43,20 @@ import "ojs/ojformlayout";
 
 
 
-import { ojDialog } from "ojs/ojdialog";
-import { ojButtonEventMap } from "ojs/ojbutton";
+  import { ojDialog } from "ojs/ojdialog";
+  import { ojButtonEventMap } from "ojs/ojbutton";
 
-type D = {
-  "custId":number,"firstName":string,"middleName":string,"lastName":string,
-  "gender":string,"dob":string,"martialStatus":string,"income":number,
-  "occupation":string, "cibilScore":number, "mobileNo":number, "email":string,
-  "address":string,"status":boolean}
-type K = D["custId"];
+// type D = {
+//   "custId":number,"firstName":string,"middleName":string,"lastName":string,
+//   "gender":string,"dob":string,"martialStatus":string,"income":number,
+//   "occupation":string, "cibilScore":number, "mobileNo":number, "email":string,
+//   "address":string,"status":boolean}
+
+
 
 
 class CustomersViewModel {
+
   custId : ko.Observable<string> | ko.Observable<any>;
   firstName : ko.Observable<string> | ko.Observable<any>;
   middleName : ko.Observable<string> | ko.Observable<any>;
@@ -69,6 +72,8 @@ class CustomersViewModel {
   address : ko.Observable<string> | ko.Observable<any>;
   status : ko.Observable<boolean> | ko.Observable<any>;
 
+
+  URL = "http://localhost:8080/customers/adddata";
   constructor() 
   {
     this.custId = ko.observable(null);
@@ -88,8 +93,8 @@ class CustomersViewModel {
   }
 
 
-   public handleClick = async (event: Event) => {
-    const row = 
+   public handleClick = async () => {
+    let rowData = 
     {
       custId : this.custId(),
       firstName : this.firstName(),
@@ -97,7 +102,7 @@ class CustomersViewModel {
       lastName : this.lastName(),
       gender : this.gender(),
       dob : this.dob(),
-      martialStatus : this.maritalStatus(),
+      maritalStatus : this.maritalStatus(),
       income : this.income(),
       occupation : this.occupation(),
       cibilScore : this.cibilScore(),
@@ -106,38 +111,34 @@ class CustomersViewModel {
       address : this.address(),
       status : false
     };
+    const row = JSON.stringify(rowData);
     console.log(row);
 
-
-    // this.clickedButton((event.currentTarget as HTMLElement).id);
-    // return true;
-    // let elementName = (event.currentTarget as HTMLElement).tagName;
-    // // alert("Congrats "+elementName+",\nYour Name : "+this.firstName()+"\nYour Salary : "+this.salary()+"\ndate and time : "+this.datetime()+"\npassword : "+this.password()+"\nare you human : "+this.human()+"\nyour experience : "+this.exp());
     
-    // let id = parseInt(this.firstName());
-    // let URL = 'https://jsonplaceholder.typicode.com/users/'+id;
-    // let res = await fetch(URL);
-    // let jsonData = await res.json();
-    // //display name, username, email, street, suite in the web page body
-    // console.log(jsonData);
-    // let { name, username, email, address, phone, website, company } = jsonData;
-    // let { street, suite } = address;
 
-    // let displayData = `
-    //     Name : ${name}<br>
-    //     Username : ${username}<br>
-    //     Email : ${email}<br>
-    //     Street : ${street}, <br>
-    //     Suite : ${suite} <br>
-    //     Phone: ${phone} <br>
-    //     website: ${website} <br>
+    const request = new Request(this.URL, {
+      headers: new Headers({
+        "Content-type": "application/json; charset=UTF-8",
+      }),
+      body: row,
+      method: "POST",
+    });
 
-    // `;
-    // let userInfoDiv = document.getElementById('user-info');
-    // if (userInfoDiv) {
-    //     userInfoDiv.innerHTML = displayData;
-    // }
+
+    try 
+    {
+      const response = await fetch(request);
+      console.log('request is initalized');
+      const addedCustomer = await response.json();
+      console.log('reponse is initialized');
+      console.log("Customer added:", addedCustomer);
+      alert("data added");
+      window.location.href = "http://localhost:8000/?ojr=about";
+    } catch (error) {
+      console.error("Error adding customer:", error);
+    }
   };
+
 
 
 }

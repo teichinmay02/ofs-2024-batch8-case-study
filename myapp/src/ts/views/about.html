@@ -4,8 +4,30 @@
  as shown at https://oss.oracle.com/licenses/upl/
  -->
 <div class="oj-hybrid-padding">
-  <h1>About Content Area</h1>
+  <h1>User Login Panel</h1>
   <div>
-      To change the content of this section, you will make edits to the about.html file located in the /ts/views folder.
+     User login 
+     <br><br><br>
+     <div>
+      <oj-c-input-text
+              id="first-name-input"
+              value="{{email}}"
+              label-hint="email"
+              label-edge="inside">
+      </oj-c-input-text>
+      <p>email : <oj-bind-text value="[[email]]"></oj-bind-text></p>
+    </div>
+    <br>
+    <div>
+      <oj-c-input-text
+              id="middle-name-input"
+              value="{{password}}"
+              label-hint="password"
+              label-edge="inside">
+      </oj-c-input-text>
+      <p>password : <oj-bind-text value="[[password]]"></oj-bind-text></p>
+    </div>
+    <br><br>
+    <oj-c-button id="button1" on-oj-action="[[handleClick]]" label="Submit" ></oj-c-button>
   </div>
 </div>
