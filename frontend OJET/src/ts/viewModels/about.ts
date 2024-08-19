@@ -39,6 +39,7 @@ import "ojs/ojcheckboxset";
 import "ojs/ojlabel";
 import "ojs/ojformlayout";
 
+import "oj-c/progress-bar";
 
 
   import { ojDialog } from "ojs/ojdialog";
@@ -47,7 +48,10 @@ import "ojs/ojformlayout";
 
 
 class AboutViewModel {
-
+  private readonly step = ko.observable(0);
+  readonly progressValue = ko.pureComputed(() => {
+    return Math.min(this.step(), 100);
+  });
   email : ko.Observable<string> | ko.Observable<any>;
   password : ko.Observable<string> | ko.Observable<any>;
   //http://localhost:8080/login/authenticate?email=riz.lala@oracle.com&password=Jane_112
@@ -57,6 +61,9 @@ class AboutViewModel {
 
     this.email = ko.observable(null);
     this.password = ko.observable(null);
+    window.setInterval(() => {
+      this.step((this.step() + 1) % 200);
+    }, 30);
   }
 
 
@@ -83,7 +90,9 @@ class AboutViewModel {
       
     })
     .then(data => {
+      alert("suceess")
       console.log('Success:', data);
+      window.location.href="http://localhost:8000/?ojr=incidents";
     })
     .catch(error => {
       console.error('Error:', error);

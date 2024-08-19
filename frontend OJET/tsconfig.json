@@ -29,6 +29,9 @@
       ],
       "preact": [
         "./node_modules/preact"
+      ],
+      "my-component/*": [
+        "./src/ts/jet-composites/my-component/*"
       ]
     },
     "declaration": true,

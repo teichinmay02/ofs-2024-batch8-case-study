@@ -16,4 +16,27 @@
   [{"headerText": "Dept Id", "field": "custId", "id": "custId"},
   {"headerText": "Dept Name", "field": "firstName", "id": "firstName"},
   {"headerText": "Manager Id", "field": "lastName", "id": "lastName"}]' class="demo-table-container"></oj-table>
+  <div id="sampleDemo" class="demo-padding demo-container">
+    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+              
+      <div id="chart-container">
+        <oj-chart
+          id="pieChart"
+          type="pie"
+          data="[[dataProvider]]"
+          animation-on-display="auto"
+          animation-on-data-change="auto"
+          style-defaults.three-d-effect="[[threeDValue]]"
+          hover-behavior="dim"></oj-chart>
+        <!-- 2D/3D toggle button -->
+        <demo-chart-three-d-effect-control
+          id="threeDControl"
+          three-d-effect="{{threeDValue}}"
+          aria-controls="pieChart"></demo-chart-three-d-effect-control>
+      </div>
+      
+      
+      
+    </div>
+  </div>
 </div>

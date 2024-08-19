@@ -1,0 +1,190 @@
+<!--
+ Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+ <style>
+    @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  #animationDemo {
+    width: 100wh;
+    height: 21.25rem;
+    background: linear-gradient(
+      -45deg,
+      var(--oj-core-warning-1),
+      var(--oj-core-danger-1),
+      var(--oj-core-info-1),
+      var(--oj-core-success-1)
+    );
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
+  }
+ </style>
+ <body class="demo-disable-bg-image">
+  
+<div class="oj-hybrid-padding">
+  <div id="sampleDemo" class="demo-padding demo-container">
+    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+      <div id="animationDemo">
+      <h1>Customers Content Area</h1>
+      <div>
+          To change the content of this section, you will make edits to the customers.html file located in the /ts/views folder.
+      </div>
+
+      <br><br>
+      <h4>Customer Registeration</h4>
+      <br><br>
+
+      <div>
+        <oj-c-input-text
+                id="text-input"
+                value="{{custId}}"
+                label-hint="Customer ID"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Customer ID :  <oj-bind-text value="[[custId]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="first-name-input"
+                value="{{firstName}}"
+                label-hint="First Name"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>First Name: <oj-bind-text value="[[firstName]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="middle-name-input"
+                value="{{middleName}}"
+                label-hint="Middle Name"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Middle Name: <oj-bind-text value="[[middleName]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="last-name-input"
+                value="{{lastName}}"
+                label-hint="Last Name"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Last Name: <oj-bind-text value="[[lastName]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+      
+        <oj-c-input-text
+                id="gender-input"
+                value="{{gender}}"
+                label-hint="gender"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Gender: <oj-bind-text value="[[gender]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-date
+                id="dob-input"
+                value="{{dob}}"
+                label-hint="Date of Birth"
+                label-edge="inside">
+        </oj-c-input-date>
+        
+        <oj-input-date label-hint="Date of Birth" value="{{dob}}"autocomplete="off"></oj-input-date>
+        <p>Date of Birth: <oj-bind-text value="[[dob]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="marital-status-input"
+                value="{{maritalStatus}}"
+                label-hint="Marital Status"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Marital Status: <oj-bind-text value="[[maritalStatus]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-number
+                id="income-input"
+                value="{{income}}"
+                label-hint="Income"
+                min="0">
+        </oj-c-input-number>
+        <p>Income: <oj-bind-text value="[[income]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="occupation-input"
+                value="{{occupation}}"
+                label-hint="Occupation"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Occupation: <oj-bind-text value="[[occupation]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-number
+                id="cibil-score-input"
+                value="{{cibilScore}}"
+                label-hint="CIBIL Score"
+                min="0" max="900">
+        </oj-c-input-number>
+        <p>CIBIL Score: <oj-bind-text value="[[cibilScore]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-number
+                id="mobile-no-input"
+                value="{{mobileNo}}"
+                label-hint="Mobile Number"
+                min="1000000000" max="9999999999">
+        </oj-c-input-number>
+        <p>Mobile No: <oj-bind-text value="[[mobileNo]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="email-input"
+                value="{{email}}"
+                label-hint="Email"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Email: <oj-bind-text value="[[email]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      <div>
+        <oj-c-input-text
+                id="address-input"
+                value="{{address}}"
+                label-hint="Address"
+                label-edge="inside">
+        </oj-c-input-text>
+        <p>Address: <oj-bind-text value="[[address]]"></oj-bind-text></p>
+      </div>
+      <br><br>
+      
+
+        <oj-c-button id="button1" on-oj-action="[[handleClick]]" label="Submit" ></oj-c-button>
+  </div>
+  
+</div>
+  
+</div>
+</div>
+
+</body>
